@@ -1,0 +1,7 @@
+<!--<p class="notice"><%= notice %></p>-->
+<!--<p class="alert"><%= alert %></p>-->
+
+
+<% if user_signed_in? %>
+    <h1><span><%= t('greeting') %>, <%= current_user.name || current_user.email%></span></h1>
+<% end %>

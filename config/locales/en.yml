@@ -1,0 +1,17 @@
+en:
+  greeting: "Hello"
+  autorithation_menu:
+        sign_in: "Sign in"
+        sign_out: "Sign out"
+        sign_up: "Sign up"
+        sign_in_with: "Sign in with"
+  settings: "Settings"
+  settings_menu:
+      themes: "Themes"
+      themes_m:
+          dark: "Dark"
+          light: "Light"
+      languages: "Languages"
+      languages_m:
+          ru: "Russian"
+          en: "English"
