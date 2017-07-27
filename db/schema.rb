@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708211237) do
+ActiveRecord::Schema.define(version: 20170727125220) do
+
+  create_table "blocks", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "instructions", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -31,7 +45,15 @@ ActiveRecord::Schema.define(version: 20170708211237) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.text "image"
+    t.string "image", default: "http://res.cloudinary.com/dpoas7y00/image/upload/v1501151345/noavatar_dmmu1e.png"
+    t.text "about"
+    t.text "hobbies"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "country"
+    t.string "city"
+    t.string "theme", default: "light"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

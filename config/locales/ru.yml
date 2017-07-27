@@ -8,6 +8,7 @@ ru:
     settings: "Настройки"
     settings_menu:
       themes: "Темы"
+      non-user: "Тема не может быть изменена для неавторизованного пользователя!"
       themes_m:
         dark: "Темная"
         light: "Светлая"
@@ -15,3 +16,22 @@ ru:
       languages_m:
         ru: "Русский"
         en: "Английский"
+    enter: "Введите "
+    password: "пароль"
+    characters_minimum: " символов минимум"
+    profile: "Мой профиль"
+    user_form:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        edit: "Редактировать"
+        image: "Аватар"
+        upload: "Загрузить"
+        hobbies: "Интересы"
+        about: "О себе"
+        phone: "Телефон"
+        country: "Страна"
+        city: "Город"
+        was_update: "Информация изменена!"
+    instructions:
+        instruction: "инструкцию"
+        create: "Создать"

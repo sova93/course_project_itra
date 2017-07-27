@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dpoas7y00
+  api_key: '167662782658861'
+  api_secret: JS9D1sK5c4W6jlnnBVN9xFHTBCs
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dpoas7y00
+  api_key: '167662782658861'
+  api_secret: JS9D1sK5c4W6jlnnBVN9xFHTBCs
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dpoas7y00
+  api_key: '167662782658861'
+  api_secret: JS9D1sK5c4W6jlnnBVN9xFHTBCs
+  enhance_image_tag: true
+  static_image_support: false

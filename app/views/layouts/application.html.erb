@@ -3,7 +3,8 @@
   <head>
     <title>PaintSite</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag current_user != nil ?  ('application_'+ current_user[:theme].to_s) :'application_light', media: 'all', 'data-turbolinks-track': 'reload', debug: false %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -51,8 +52,8 @@
                   <li class="dropdown-submenu">
                     <a href="#"><%= t('settings_menu.themes') %></a>
                     <ul class="dropdown-menu">
-                      <li><%= link_to t('settings_menu.themes_m.dark'), new_user_session_path %></li>
-                      <li><%= link_to t('settings_menu.themes_m.light'), "/users/auth/facebook" %></li>
+                      <li><%= link_to t('settings_menu.themes_m.dark'),  controller: '/persons', action: 'change_theme', theme_name: 'dark'  %></li>
+                      <li><%= link_to t('settings_menu.themes_m.light'), controller: '/persons', action: 'change_theme', theme_name: 'light' %></li>
                     </ul>
                   </li>
 
@@ -71,7 +72,7 @@
       </div>
     </div>
   </nav>
-  <div class="container">
+  <div class="container-fluid">
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
         <%= puts key %>

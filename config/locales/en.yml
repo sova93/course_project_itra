@@ -8,6 +8,7 @@ en:
   settings: "Settings"
   settings_menu:
       themes: "Themes"
+      non-user: "Can't change theme for non-user!"
       themes_m:
           dark: "Dark"
           light: "Light"
@@ -15,3 +16,22 @@ en:
       languages_m:
           ru: "Russian"
           en: "English"
+  enter: "Enter your "
+  password: "password"
+  characters_minimum: " characters minimum"
+  profile: "My profile"
+  user_form:
+    first_name: "First name"
+    last_name: "Second name"
+    edit: "Edit"
+    image: "Avatar"
+    upload: "Upload"
+    hobbies: "Hobbies"
+    about: "About"
+    phone: "Phone"
+    country: "Country"
+    city: "City"
+    was_update: "Options updated!"
+  instructions:
+    instruction: "instruction"
+    create: "Create"

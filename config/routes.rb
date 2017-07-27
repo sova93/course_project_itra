@@ -1,4 +1,6 @@
 # Rails.application.routes.draw do
+#   get 'persons/profile'
+
 #
 #   devise_for :users, :controllers => {
 #       omniauth_callbacks: 'omniauth_callbacks',
@@ -28,6 +30,13 @@ Rails.application.routes.draw do
         # registrations: 'registrations',
         sessions: 'custom_session'
     }
+    get 'persons/profile', as: 'user_root'
+    match 'persons/edit', via: :all
+
+    get 'persons/change_theme/(:theme_name)', to: 'persons#change_theme'
+
+    # resources :persons
+    # resources :blocks
 
     root 'home#index'
   end

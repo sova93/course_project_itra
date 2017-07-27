@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+<div class="row main">
+  <div class="main-login main-center">
+    <%= form_for @user, url: {:controller => "persons", :action => "edit"} do |f| %>
+
+        <div class="form-group">
+          <%= f.label t('user_form.first_name'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+              <%= f.text_field :firstname, autofocus: true, class: 'form-control', placeholder: t('user_form.first_name') %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('user_form.last_name'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+              <%= f.text_field :lastname, autofocus: true, class: 'form-control', placeholder: t('user_form.last_name') %>
+          </div>
+        </div>
+
+            <div class="form-group">
+              <%= f.label t('user_form.image'), class: 'cols-sm-2 control-label' %>
+              <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                 <%=  t('user_form.upload')  %> <%= f.file_field :image, id: 'imgInp' %>
+                </span>
+            </span>
+                <input type="text" class="form-control" readonly>
+              </div>
+              <img id='img-upload'/>
+            </div>
+
+        <div class="form-group">
+          <%= f.label t('user_form.hobbies'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+              <%= f.text_area :hobbies, autofocus: true, class: 'form-control', placeholder: t('user_form.hobbies') %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('user_form.about'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.text_area :about, autofocus: true, class: 'form-control', placeholder: t('user_form.about') %>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <%= f.submit t('user_form.edit'), class:'btn btn-primary btn-lg btn-block login-button' %>
+        </div>
+
+  <% end %>
+  </div>
+</div>
