@@ -32,6 +32,12 @@ en:
     country: "Country"
     city: "City"
     was_update: "Options updated!"
+    error_creation: "Didn't create "
   instructions:
     instruction: "instruction"
     create: "Create"
+    name: "Name"
+    category: "Category"
+    add: "Add"
+    step: "step"
+    tags: "tags"

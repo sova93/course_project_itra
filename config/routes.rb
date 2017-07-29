@@ -35,6 +35,9 @@ Rails.application.routes.draw do
 
     get 'persons/change_theme/(:theme_name)', to: 'persons#change_theme'
 
+    resource :instructions
+    resource :steps
+
     # resources :persons
     # resources :blocks
 

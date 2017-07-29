@@ -20,18 +20,13 @@ class PersonsController < ApplicationController
 
   def change_theme
     theme_name = params[:theme_name]
-
     if current_user != nil
       @user = User.find_by(id: current_user[:id])
       @user.update_attribute(:theme, theme_name)
     else
       flash[:info] = t('settings_menu.non-user')
     end
-
     redirect_to root_path
-
-
-
   end
 
   private

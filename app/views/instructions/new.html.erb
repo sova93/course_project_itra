@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+<div class="row main">
+  <div class="main-login main-center">
+    <%= form_for :instruction, url: {:controller => "instructions", :action => "create"} do |f| %>
+
+        <div class="form-group">
+          <%= f.label t('instructions.name'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: t('instructions.name') %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('instructions.category'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.select :category, options_for_select(Category.all.map{|s|[s.name, s.id]}), class: 'form-control select_color' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('instructions.tags'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.text_field :all_tags, autofocus: true, class: 'form-control', placeholder: t('instructions.tags') %>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <%= f.submit t('instructions.add'), class:'btn btn-primary btn-lg btn-block login-button' %>
+        </div>
+
+    <% end %>
+  </div>
+</div>

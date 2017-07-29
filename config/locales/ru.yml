@@ -32,6 +32,12 @@ ru:
         country: "Страна"
         city: "Город"
         was_update: "Информация изменена!"
+        error_creation: "Не удалось создать "
     instructions:
         instruction: "инструкцию"
         create: "Создать"
+        name: "Наименование"
+        category: "Категория"
+        add: "Добавить"
+        step: "шаг"
+        tags: "Tеги"

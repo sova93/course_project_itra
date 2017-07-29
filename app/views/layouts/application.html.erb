@@ -14,6 +14,10 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-left">
+          <button class="btn btn-primary">
+            <%= link_to "PROFILE", user_root_path %>
+          </button>
+
           <li class="dropdown">
             <button class="navbar-btn btn btn-primary dropdown-toggle" <% if user_signed_in? %> style="color: rgb(255,246,0)"<% end %> data-toggle="dropdown">
               <%= t('autorithation_menu.sign_in') %>
