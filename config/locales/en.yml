@@ -41,3 +41,5 @@ en:
     add: "Add"
     step: "step"
     tags: "tags"
+    block: "block"
+    type: "Type"

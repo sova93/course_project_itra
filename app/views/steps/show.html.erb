@@ -1,2 +1,3 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <h1> <%= @step.name %></h1>
+<%= link_to t('instructions.add')+ ' ' + t('instructions.step'), new_block_path(step_id: @step) %>

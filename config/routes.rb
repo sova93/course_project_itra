@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resource :steps
 
     # resources :persons
-    # resources :blocks
+    resources :blocks
 
     root 'home#index'
   end

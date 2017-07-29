@@ -2,7 +2,7 @@
 
 <div class="row main">
   <div class="main-login main-center">
-    <%= form_for :step, url: {:controller => "steps", :action => "create"} do |f| %>
+    <%= form_for :block, url: {:controller => "blocks", :action => "create"} do |f| %>
 
         <div class="form-group">
           <%= f.label t('instructions.name'), class: 'cols-sm-2 control-label' %>
@@ -11,7 +11,14 @@
           </div>
         </div>
 
-<%= f.hidden_field :instruction, value: @instruction.id %>
+        <div class="form-group">
+          <%= f.label t('instructions.type'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.select :type, Block.types.keys %>
+          </div>
+        </div>
+
+        <%= f.hidden_field :step, value: @step.id %>
 
         <div class="form-group ">
           <%= f.submit t('instructions.add'), class:'btn btn-primary btn-lg btn-block login-button' %>
