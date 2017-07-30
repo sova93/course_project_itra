@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users, skip: [:session, :password, :registration, :confirmation], :controllers => {
       omniauth_callbacks: 'omniauth_callbacks',
   }
-  scope '(:locale)' do
+  scope '(:locale)'  do
     # We define here a route inside the locale thats just saves the current locale in the session
     get 'omniauth/:provider' => 'omniauth#localized', as: :localized_omniauth
 
@@ -35,11 +35,12 @@ Rails.application.routes.draw do
 
     get 'persons/change_theme/(:theme_name)', to: 'persons#change_theme'
 
-    resource :instructions
-    resource :steps
-
+    resources :instructions
+    resources :steps
+    resources :tags
     # resources :persons
     resources :blocks
+
 
     root 'home#index'
   end

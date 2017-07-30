@@ -1,7 +1,11 @@
 class BlocksController < ApplicationController
-  def blocks_show
-    @blocks = Block.all
-  end
+  # def blocks_show
+  #   @blocks = Block.all
+  # end
+
+  # def show
+  #   # @user_blocks = Block
+  # end
 
   def new
     @block = Block.new
@@ -12,7 +16,7 @@ class BlocksController < ApplicationController
     block = block_params
     @block = Block.new(name: block[:name], block_type: block[:block_type], step: Step.find(block[:step].to_i))
     if  block[:block_type] == "text"
-      @block.body = block[:block_type]
+      @block.body = block[:body]
     end
     if block[:block_type] == "image" or block[:block_type] == "video"
       upload(block[:body], block[:block_type])

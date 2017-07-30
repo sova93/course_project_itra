@@ -52,6 +52,28 @@ $(document).ready( function() {
     $(document).on("change", "#imgInp", function(){
         readURL(this);
     });
+
+    $("div#block_image").hide();
+    $("div#block_video").hide();
+
+
+    $("select#block_block_type").change(function() {
+        if ($(this).val() == "text"){
+            $("div#block_image").hide();
+            $("div#block_video").hide();
+            $("div#block_text").show();
+        }
+        if ($(this).val() == "image"){
+            $("div#block_text").hide();
+            $("div#block_video").hide();
+            $("div#block_image").show();
+        }
+        if ($(this).val() == "video"){
+            $("div#block_text").hide();
+            $("div#block_image").hide();
+            $("div#block_video").show();
+        }
+    });
 });
 
 

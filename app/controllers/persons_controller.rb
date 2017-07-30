@@ -1,5 +1,6 @@
 class PersonsController < ApplicationController
   def profile
+    @user_instructions = Instruction.where(user_id: current_user[:id])
   end
 
   def edit

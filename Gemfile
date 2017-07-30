@@ -31,7 +31,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'trix'
-
+gem 'debase'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

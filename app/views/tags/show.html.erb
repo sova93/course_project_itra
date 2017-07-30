@@ -1,0 +1,6 @@
+<h1><%=@tag.name%></h1>
+<%if @tag.instructions.empty?%>
+    <h2><%= t('instructions.empty')%></h2>
+<%else%>
+<%= render @tag.instructions %>
+<% end %>

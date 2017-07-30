@@ -44,3 +44,4 @@ en:
     block: "block"
     type: "Type"
     content: "Content"
+    empty: "No instructions available!"

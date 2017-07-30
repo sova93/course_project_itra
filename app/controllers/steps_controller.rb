@@ -20,6 +20,7 @@ class StepsController < ApplicationController
 
   def show
     @step = Step.find(params[:id])
+    @step_blocks = Block.where(step_id: @step.id)
   end
 
   private

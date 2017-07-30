@@ -1,3 +1,28 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <h1> <%= @step.name %></h1>
-<%= link_to t('instructions.add')+ ' ' + t('instructions.step'), new_block_path(step_id: @step) %>
+<%= link_to t('instructions.add')+ ' ' + t('instructions.block'), new_block_path(step_id: @step) %>
+
+<!--<table>-->
+  <!--<tr>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+  <!--</tr>-->
+
+  <!--<% @step_blocks.each do |block| %>-->
+      <!--<tr>-->
+        <!--<td><%= block.name %></td>-->
+        <td><% if block.block_type == "text" %>
+              <!--<%= block.body%>-->
+          <!--<% elsif block.block_type == "image" %>-->
+              <!--<%= block.body%>-->
+          <!--<% end %>-->
+              <!--</td>-->
+        <!--&lt;!&ndash;<td><%= link_to "Show", book %></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td><%= link_to "Edit", edit_book_path(book) %></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td><%= link_to "Remove", book, method: :delete, data: { confirm: "Are you sure?" } %></td>&ndash;&gt;-->
+      <!--</tr>-->
+  <!--<% end %>-->
+<!--</table>-->

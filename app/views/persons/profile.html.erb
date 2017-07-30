@@ -1,6 +1,6 @@
   <div class="col-xs-3 col-md-3 mark">
     <div><%= link_to t('profile'), persons_edit_path %></div>
-    <%= link_to t('instructions.create')+" "+t('instructions.instruction'), new_instructions_path %>
+    <%= link_to t('instructions.create')+" "+t('instructions.instruction'), new_instruction_path %>
     </div>
   <div class="col-xs-9 col-md-9 mark">
     <h4><%= current_user.email%></h4>
@@ -47,4 +47,23 @@
       </div>
 
     </div>
+
+    <table border="1" class="table">
+      <tr>
+        <th><%=t('instructions.name')%></th>
+        <th><%=t('instructions.category')%></th>
+        <th><%=t('instructions.tags')%></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @user_instructions.each do |instruction| %>
+          <tr>
+            <td><%= instruction.name %></td>
+            <td><%= instruction.category.name %> </td>
+            <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
+          </tr>
+      <% end %>
+    </table>
+
   </div>

@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag current_user != nil ?  ('application_'+ current_user[:theme].to_s) :'application_light', media: 'all', 'data-turbolinks-track': 'reload', debug: false %>
+    <%= stylesheet_link_tag 'tags' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -76,6 +77,17 @@
       </div>
     </div>
   </nav>
+
+
+  <div class="col-xs-12 col-md-12" align = "center">
+    <div class="tag_cloud">
+      <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+      <% end %>
+    </div>
+  </div>
+
+
   <div class="container-fluid">
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
