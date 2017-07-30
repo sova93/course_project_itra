@@ -14,9 +14,41 @@
         <div class="form-group">
           <%= f.label t('instructions.type'), class: 'cols-sm-2 control-label' %>
           <div class="cols-sm-10">
-            <%= f.select :type, Block.types.keys %>
+            <%= f.select :block_type, Block.block_types.keys %>
           </div>
         </div>
+
+        <!--<div class="form-group">-->
+          <!--<%= f.label t('instructions.content'), class: 'cols-sm-2 control-label' %>-->
+          <!--<div class="cols-sm-10">-->
+            <!--<%= f.trix_editor :body, class: 'editor' %>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group">
+          <%= f.label t('user_form.image'), class: 'cols-sm-2 control-label' %>
+          <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                 <%=  t('user_form.upload')  %> <%= f.file_field :body, id: 'imgInp' %>
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+          </div>
+          <img id='img-upload'/>
+        </div>
+
+        <!--<div class="form-group">-->
+          <!--<%= f.label t('user_form.image'), class: 'cols-sm-2 control-label' %>-->
+          <!--<div class="input-group">-->
+            <!--<span class="input-group-btn">-->
+                <!--<span class="btn btn-primary btn-file">-->
+                 <!--<%=  t('user_form.upload')  %> <%= f.file_field :body %>-->
+                <!--</span>-->
+            <!--</span>-->
+            <!--<input type="text" class="form-control" readonly>-->
+          <!--</div>-->
+        <!--</div>-->
 
         <%= f.hidden_field :step, value: @step.id %>
 

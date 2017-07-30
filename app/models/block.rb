@@ -1,4 +1,4 @@
 class Block < ApplicationRecord
   belongs_to :step
-  enum type: [:text, :image, :video]
+  enum block_type: [:text, :image, :video]
 end
