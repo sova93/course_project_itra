@@ -1,22 +1,2 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-<div class="row main">
-  <div class="main-login main-center">
-    <%= form_for :step, url: {:controller => "steps", :action => "create"} do |f| %>
-
-        <div class="form-group">
-          <%= f.label t('instructions.name'), class: 'cols-sm-2 control-label' %>
-          <div class="cols-sm-10">
-            <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: t('instructions.name') %>
-          </div>
-        </div>
-
-<%= f.hidden_field :instruction, value: @instruction.id %>
-
-        <div class="form-group ">
-          <%= f.submit t('instructions.add'), class:'btn btn-primary btn-lg btn-block login-button' %>
-        </div>
-
-    <% end %>
-  </div>
-</div>
+<H1><%=t('instructions.create')+ " "+ t('instructions.step')%></H1>
+<%= render 'form', {:_form_url => instruction_steps_path } %>

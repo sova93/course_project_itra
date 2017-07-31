@@ -45,3 +45,7 @@ ru:
         type: "Тип"
         content: "Содержание"
         empty: "Инструкции отсутствуют!"
+    action:
+        change: "Изменить"
+        delete: "Удалить"
+        warring: "Вы уверены?"

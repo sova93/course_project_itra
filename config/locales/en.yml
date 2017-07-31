@@ -45,3 +45,7 @@ en:
     type: "Type"
     content: "Content"
     empty: "No instructions available!"
+  action:
+    change: "Change"
+    delete: "Delete"
+    warring: "Are you sure?"

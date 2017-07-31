@@ -12,6 +12,10 @@ class BlocksController < ApplicationController
     @step = Step.find(params[:step_id].to_i)
   end
 
+  def show
+
+  end
+
   def create
     block = block_params
     @block = Block.new(name: block[:name], block_type: block[:block_type], step: Step.find(block[:step].to_i))

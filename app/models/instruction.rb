@@ -1,9 +1,9 @@
 class Instruction < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :taggings
+  has_many :taggings, :dependent => :delete_all
   has_many :tags, through: :taggings , :source => :tag
-  has_many :steps
+  has_many :steps, :dependent => :delete_all
 
   def all_tags=(names)
     created_tags = names.split(",").map do |name|

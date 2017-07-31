@@ -1,3 +1,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <h1> <%= @instruction.name %></h1>
-<%= link_to t('instructions.add')+ ' ' + t('instructions.step'), new_step_path(instruction_id: @instruction) %>
+<%= link_to t('instructions.add')+ ' ' + t('instructions.step'), new_instruction_step_path(instruction_id: @instruction) %>
+
+<table border="1" class="table">
+  <tr>
+    <th><%=t('instructions.name')%></th>
+    <th><%= t('action.change')%></th>
+    <th><%= t('action.delete')%></th>
+  </tr>
+
+  <% @instruction.steps.each do |step| %>
+      <tr>
+    <td><%= link_to step.name, instruction_step_path(@instruction.id, step.id) %></td>
+        <td><%= link_to t('action.change'), edit_instruction_step_path(@instruction.id, step.id) %></td>
+        <td><%= link_to t('action.delete'), instruction_step_path(@instruction.id, step.id), method: :delete, data: {confirm: t('action.warring') } %></td>
+      </tr>
+  <% end %>
+</table>
