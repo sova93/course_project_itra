@@ -1,5 +1,7 @@
 ru:
     greeting: "Привет"
+    user: "Пользователь"
+    time_update: "Время обновления"
     autorithation_menu:
       sign_in: "Вход"
       sign_out: "Выход"
@@ -45,6 +47,8 @@ ru:
         type: "Тип"
         content: "Содержание"
         empty: "Инструкции отсутствуют!"
+        last_instructions: "Последние редактируемые инструкции"
+        popular: "Популярные инструкции"
     action:
         change: "Изменить"
         delete: "Удалить"

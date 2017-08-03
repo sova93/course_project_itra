@@ -1,7 +1,39 @@
-<!--<p class="notice"><%= notice %></p>-->
-<!--<p class="alert"><%= alert %></p>-->
-
-
 <% if user_signed_in? %>
     <h1><span><%= t('greeting') %>, <%= current_user.name || current_user.email%></span></h1>
 <% end %>
+
+<H1><%= t('instructions.last_instructions')%></H1>
+
+<table border="1" class="table">
+  <tr>
+    <th><%=t('instructions.name')%></th>
+    <th><%= t('user')%></th>
+    <th><%= t('time_update')%></th>
+  </tr>
+
+  <% @instructions.each do |instruction| %>
+      <tr>
+        <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
+        <td><%= instruction.user.name %></td>
+        <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+      </tr>
+  <% end %>
+</table>
+
+<H1><%= t('instructions.popular')%></H1>
+
+<table border="1" class="table">
+  <tr>
+    <th><%=t('instructions.name')%></th>
+    <th><%= t('user')%></th>
+    <th><%= t('time_update')%></th>
+  </tr>
+
+  <% @popular_instructions.each do |instruction| %>
+      <tr>
+        <td><%= link_to instruction.instruction.name, instruction_path(instruction.id) %></td>
+        <td><%= instruction.instruction.user.name %></td>
+        <td><%= instruction.instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+      </tr>
+  <% end %>
+</table>

@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag current_user != nil ?  ('application_'+ current_user[:theme].to_s) :'application_light', media: 'all', 'data-turbolinks-track': 'reload', debug: false %>
     <%= stylesheet_link_tag 'tags' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -15,9 +16,11 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-left">
+          <%if user_signed_in?%>
           <button class="btn btn-primary">
             <%= link_to "PROFILE", user_root_path %>
           </button>
+              <% end%>
 
           <li class="dropdown">
             <button class="navbar-btn btn btn-primary dropdown-toggle" <% if user_signed_in? %> style="color: rgb(255,246,0)"<% end %> data-toggle="dropdown">
@@ -73,6 +76,16 @@
             </ul>
           </li>
         </ul>
+
+
+          <div class="col-lg-6" >
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+      </span>
+            </div><!-- /input-group -->
+          </div>
 
       </div>
     </div>

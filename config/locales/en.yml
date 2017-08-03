@@ -1,5 +1,7 @@
 en:
   greeting: "Hello"
+  user: "User"
+  time_update: "Time update"
   autorithation_menu:
         sign_in: "Sign in"
         sign_out: "Sign out"
@@ -45,6 +47,8 @@ en:
     type: "Type"
     content: "Content"
     empty: "No instructions available!"
+    last_instructions: "Last updated instructions"
+    popular: "Popular instructions"
   action:
     change: "Change"
     delete: "Delete"

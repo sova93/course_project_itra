@@ -2,20 +2,26 @@ class InstructionsController < ApplicationController
   def create
     params = instruction_params
     params[:category] = Category.find_by(id: params[:category].to_i)
-    puts params[:category]
     @instruction = Instruction.new(params)
     @instruction.user_id = current_user[:id]
     if @instruction.save
-      flash[:success] = t('user_form.was_update')
+      @count_links = CountLink.create(count: 0, instruction_id: @instruction.id)
+     flash[:success] = t('user_form.was_update')
       render :show
     else
-      puts "ploxo"
       render :new
     end
   end
 
   def show
     @instruction = Instruction.find(params[:id])
+    @count_link=CountLink.find_by(instruction_id: @instruction.id)
+    @count_link.count += 1
+    @count_link.save
+    # @query = Instruction.search do
+    #   fulltext params[:search]
+    # end
+    # @instructions = @query.results
   end
 
 
@@ -50,4 +56,5 @@ class InstructionsController < ApplicationController
   def instruction_params
     params.require(:instruction).permit(:name, :category, :all_tags)
   end
+
  end

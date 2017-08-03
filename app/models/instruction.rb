@@ -1,9 +1,14 @@
 class Instruction < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_one :count_link, :dependent => :delete
   has_many :taggings, :dependent => :delete_all
   has_many :tags, through: :taggings , :source => :tag
   has_many :steps, :dependent => :delete_all
+
+  searchable do
+    text :name
+  end
 
   def all_tags=(names)
     created_tags = names.split(",").map do |name|

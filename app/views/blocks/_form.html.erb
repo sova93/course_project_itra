@@ -1,0 +1,53 @@
+
+<div class="row main">
+  <div class="main-login main-center">
+    <%= form_for @block, url: _form_url do |f| %>
+
+        <div class="form-group">
+          <%= f.label t('instructions.type'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.select :block_type, Block.block_types.keys%>
+          </div>
+        </div>
+
+        <div class="form-group" id="block_text">
+          <%= f.label t('instructions.content'), class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <%= f.trix_editor :body, class: 'editor' %>
+          </div>
+        </div>
+
+        <div class="form-group" id="block_image">
+          <%= f.label t('user_form.image'), class: 'cols-sm-2 control-label' %>
+          <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                 <%=  t('user_form.upload')  %> <%= f.file_field :body, id: 'imgInp' %>
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+          </div>
+          <img id='img-upload'/>
+        </div>
+
+        <div class="form-group" id="block_video">
+          <%= f.label t('user_form.image'), class: 'cols-sm-2 control-label' %>
+          <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                 <%=  t('user_form.upload')  %> <%= f.file_field :body %>
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+          </div>
+        </div>
+
+        <%= f.hidden_field :step, value: @block.step_id %>
+
+        <div class="form-group ">
+          <%= f.submit t('instructions.add'), class:'btn btn-primary btn-lg btn-block login-button' %>
+        </div>
+
+    <% end %>
+  </div>
+</div>

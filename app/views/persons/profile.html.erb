@@ -59,7 +59,12 @@
 
       <% @user_instructions.each do |instruction| %>
           <tr>
-            <td><%= link_to instruction.name, instruction_path(instruction)%> <%= instruction.steps.count %> / <%= instruction.steps.map{|s| s.blocks.count }.sum %></td>
+            <td>
+              <%= link_to instruction.name, instruction_path(instruction)%>
+              <%= instruction.steps.count %>
+              /
+              <%= instruction.steps.map{|s| s.blocks.count }.sum %>
+            </td>
             <td><%= instruction.category.name %> </td>
             <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
             <td><%= link_to t('action.change'), edit_instruction_path(instruction)%></td>
