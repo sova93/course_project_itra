@@ -18,10 +18,6 @@ class InstructionsController < ApplicationController
     @count_link=CountLink.find_by(instruction_id: @instruction.id)
     @count_link.count += 1
     @count_link.save
-    # @query = Instruction.search do
-    #   fulltext params[:search]
-    # end
-    # @instructions = @query.results
   end
 
 
@@ -49,6 +45,10 @@ class InstructionsController < ApplicationController
     @instruction = Instruction.find(params[:id])
     @instruction.destroy
     redirect_to user_root_path
+  end
+
+  def index
+    @instructions = Instruction.all
   end
 
   private

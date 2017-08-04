@@ -8,6 +8,15 @@ class Instruction < ApplicationRecord
 
   searchable do
     text :name
+    text :user_name do
+      user.name
+    end
+    text :category_name do
+      category.name
+    end
+    text :steps do
+      steps.map { |step| step.name }
+    end
   end
 
   def all_tags=(names)

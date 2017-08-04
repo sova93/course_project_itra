@@ -53,3 +53,7 @@ en:
     change: "Change"
     delete: "Delete"
     warring: "Are you sure?"
+    search: "Search results"
+    go: "Search"
+    search_place: "Search for"
+    all_istructions: "All instructions"

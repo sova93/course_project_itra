@@ -77,15 +77,23 @@
           </li>
         </ul>
 
-
+        <form action="<%= search_search_path %>" method="get">
           <div class="col-lg-6" >
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input name="search" type="text" class="form-control" placeholder=<%=t('action.search_place')%>>
               <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">Go!</button>
-      </span>
-            </div><!-- /input-group -->
+                <button class="btn btn-primary" type="submit"><%=t('action.go')%></button>
+              </span>
+            </div>
           </div>
+        </form>
+
+        <div align="right">
+        <a href= <%= root_path%>>
+          <img src="http://res.cloudinary.com/dpoas7y00/image/upload/v1501857180/Actions-go-home_tcqgu4.ico" alt="Go to W3Schools!" width="45" height="45" border="0">
+        </a>
+        </div>
+
 
       </div>
     </div>

@@ -53,3 +53,7 @@ ru:
         change: "Изменить"
         delete: "Удалить"
         warring: "Вы уверены?"
+        search: "Результаты поиска"
+        go: "Поиск"
+        search_place: "Что ищем?"
+        all_istructions: "Все инструкции"

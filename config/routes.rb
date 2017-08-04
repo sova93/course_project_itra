@@ -1,4 +1,6 @@
 # Rails.application.routes.draw do
+#   get 'search/search'
+
 #   get 'persons/profile'
 
 #
@@ -43,12 +45,7 @@ Rails.application.routes.draw do
 
 
     resources :tags
-
-
-    # resources :persons
-
-
-
+    get 'search/search'
     root 'home#index'
   end
 end
