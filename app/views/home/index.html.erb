@@ -10,7 +10,7 @@
   <% @instructions.each do |instruction| %>
       <tr>
         <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
-        <td><%= instruction.user.name %></td>
+        <td><%= link_to instruction.user.name,   persons_show_path(instruction.user) %></td>
         <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
       </tr>
   <% end %>
@@ -25,11 +25,13 @@
     <th><%= t('time_update')%></th>
   </tr>
 
-  <% @popular_instructions.each do |instruction| %>
-      <tr>
-        <td><%= link_to instruction.instruction.name, instruction_path(instruction.id) %></td>
-        <td><%= instruction.instruction.user.name %></td>
-        <td><%= instruction.instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
-      </tr>
+  <% if true %>
+      <% @popular_instructions.each do |instruction| %>
+          <tr>
+            <td><%= link_to instruction.instruction.name, instruction_path(instruction.instruction.id) %></td>
+            <td><%= link_to instruction.instruction.user.name,   persons_show_path(instruction.instruction.user) %></td>
+            <td><%= instruction.instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+          </tr>
+      <% end %>
   <% end %>
 </table>

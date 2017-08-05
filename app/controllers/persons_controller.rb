@@ -1,30 +1,74 @@
 class PersonsController < ApplicationController
+
+  def index
+    @users = User.all
+    authorize! :index, User
+  end
+
   def profile
-    @user_instructions = Instruction.where(user_id: current_user[:id])
+    authorize! :show_profile, User
+
+    @user_obj = User.find(current_user[:id])
+    @user_instructions = Instruction.where(user_id: @user_obj)
+  end
+
+  def show
+    authorize! :show, Instruction
+
+    @user_obj = User.find(params[:id])
+    @user_instructions = Instruction.where(user_id: @user_obj)
   end
 
   def edit
+    authorize! :update, User
+
     case request.method_symbol
-    when :get
-      @user = User.find_by(id: current_user[:id])
-    when :post
-      @user = User.find_by(id: current_user[:id])
-      upload_img
-      if @user.update_attributes(user_params)
+      when :get
+        @user = User.find_by(id: current_user[:id])
+      when :post
+        @user = User.find_by(id: current_user[:id])
+        upload_img
+        if @user.update_attributes(user_params)
           flash[:success] = t('user_form.was_update')
           redirect_to user_root_path
         else
-        redirect_to :back
+          redirect_to :back
         end
     end
   end
 
+  def block
+    authorize! :block, User
+
+    @user = User.find(params[:id])
+    unless @user.banned?
+      @user.banned=true
+      redirect_to  request.referer if @user.save
+    end
+  end
+
+  def unblock
+    authorize! :block, User
+
+    @user = User.find(params[:id])
+    if @user.banned?
+      @user.banned=false
+      redirect_to  request.referer if @user.save
+    end
+  end
+
+  def destroy
+    authorize! :destroy, User
+    @user = User.find(params[:id])
+    redirect_to  request.referer if @user.destroy
+  end
+
   def change_theme
-    theme_name = params[:theme_name]
-    if current_user != nil
+    begin
+      authorize! :change_theme, User
       @user = User.find_by(id: current_user[:id])
-      @user.update_attribute(:theme, theme_name)
-    else
+      @user.update_attribute(:theme, params[:theme_name])
+    rescue AccessGranted::AccessDenied
       flash[:info] = t('settings_menu.non-user')
     end
     redirect_to root_path

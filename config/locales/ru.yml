@@ -57,3 +57,8 @@ ru:
         go: "Поиск"
         search_place: "Что ищем?"
         all_istructions: "Все инструкции"
+        block: "Заблокировать"
+        unblock: "Разблокировать"
+    users:
+        all_users: "Все пользователи"
+        created_at: "Время создания"

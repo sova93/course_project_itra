@@ -92,6 +92,7 @@
         <a href= <%= root_path%>>
           <img src="http://res.cloudinary.com/dpoas7y00/image/upload/v1501857180/Actions-go-home_tcqgu4.ico" alt="Go to W3Schools!" width="45" height="45" border="0">
         </a>
+          <%= current_user != nil ? current_user.role : 'None' %>
         </div>
 
 

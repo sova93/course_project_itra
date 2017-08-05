@@ -57,3 +57,8 @@ en:
     go: "Search"
     search_place: "Search for"
     all_istructions: "All instructions"
+    block: "Block"
+    unblock: "Unblock"
+  users:
+    all_users: "All users"
+    created_at: "Created at"

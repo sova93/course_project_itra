@@ -27,7 +27,11 @@
             </span>
             <input type="text" class="form-control" readonly>
           </div>
-          <img id='img-upload'/>
+          <% if @block.persisted? && @block.image? %>
+              <img id='img-upload' src="<%= @block.body %>" />
+          <% else %>
+              <img id='img-upload'  />
+          <% end %>
         </div>
 
         <div class="form-group" id="block_video">

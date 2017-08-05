@@ -1,6 +1,21 @@
 <h1><%=@tag.name%></h1>
-<%if @tag.instructions.empty?%>
+<%if @instructions.empty?%>
     <h2><%= t('instructions.empty')%></h2>
 <%else%>
-<%= render @tag.instructions %>
+    <table border="1" class="table">
+      <tr>
+        <th><%=t('instructions.name')%></th>
+        <th><%= t('user')%></th>
+        <th><%= t('time_update')%></th>
+      </tr>
+
+      <% @instructions.each do |instruction| %>
+          <tr>
+            <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
+            <td><%= link_to instruction.user.name,   persons_show_path(instruction.user) %></td>
+            <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+          </tr>
+      <% end %>
+    </table>
+
 <% end %>

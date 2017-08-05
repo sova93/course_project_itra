@@ -1,26 +1,35 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
 <h1> <%= @step.name %></h1>
+
 <%= link_to t('instructions.add')+ ' ' + t('instructions.block'), new_instruction_step_block_path(instruction_id: @step.instruction, step_id: @step.id) %>
 
-<table border="1" class="table">
-  <tr>
-    <th><%=t('instructions.name')%></th>
-    <th><%=t('action.change')%></th>
-    <th><%=t('action.delete')%></th>
-  </tr>
-
+<div class="col-md-12">
   <% @step.blocks.each do |block| %>
-      <tr>
-        <td><%= link_to block.body, instruction_step_block_path(@step.instruction.id, @step.id, block.id) %></td>
-        <td><%= link_to t('action.change'), edit_instruction_step_block_path(@step.instruction.id, @step.id, block.id)%></td>
-        <td><%= link_to t('action.delete'), instruction_step_block_path(@step.instruction.id, @step.id, block.id), method: :delete, data: {confirm: t('action.warring') } %></td>
-      </tr>
+      <div class="col-md-12" style="margin-bottom: 25px;">
+        <div class="col-md-11">
+          <% if block.text? %>
+              <%= block.body %>
+          <% elsif block.image? %>
+              <img src="<%= block.body %>" alt="">
+          <% elsif block.video? %>
+              <video width="600" controls="controls" src="<%= block.body %>"></video>
+          <% end%>
+        </div>
+        <div class="col-md-1">
+          <%	 if can? :update, block %>
+          <%= link_to raw('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'), edit_instruction_step_block_path(@step.instruction.id, @step.id, block.id)%>
+          <% end%>
+          <%	 if can? :destroy, block %>
+              <%= link_to raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'), instruction_step_block_path(@step.instruction.id, @step.id, block.id), method: :delete, data: {confirm: t('action.warring') } %>
+        <%end %>
+              </div>
+      </div>
   <% end %>
-</table>
+</div>
 
 <div id="disqus_thread"></div>
 <script>
-
     /**
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/

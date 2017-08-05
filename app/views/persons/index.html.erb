@@ -1,0 +1,34 @@
+<%=t('users.all_users')%>
+<table border="1" class="table">
+  <tr>
+    <th class="avatar_column"><%= t('user_form.image')%></th>
+    <th><%=t('user')%></th>
+    <th>email</th>
+    <th><%=t('users.created_at')%></th>
+    <% if can? :block, User %>
+        <th><%= t('action.block')%></th>
+    <% end %>
+    <% if can? :destroy, User %>
+        <th><%= t('action.delete')%></th>
+    <% end %>
+  </tr>
+
+  <% @users.each do |user| %>
+      <tr>
+        <td class="avatar_column"><img src="<%=user.image %>" alt="Avatar" width="70" height="70" border="0"></td>
+        <td><%= user.name %> </td>
+        <td><%= link_to user.email, persons_show_path(user)%> </td>
+        <td><%= user.created_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+        <% if can? :block, User %>
+            <% if user.banned? %>
+                <td><%= link_to t('action.unblock'), persons_unblock_path(user), method: :post %></td> <!-- @TODO: user.block -->
+            <% else %>
+                <td><%= link_to t('action.block'), persons_block_path(user), method: :post %></td> <!-- @TODO: user.block -->
+            <% end %>
+        <% end %>
+        <% if can? :destroy, User %>
+            <td><%= link_to t('action.delete'), persons_destroy_path(user), method: :delete, data: {confirm: t('action.warring') }%></td>
+      <% end %>
+      </tr>
+  <% end %>
+</table>

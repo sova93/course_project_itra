@@ -1,19 +1,17 @@
-<H1><%= t('action.all_istructions')%></H1>
-
+<h1><%= t('action.search')%></h1>
 <table border="1" class="table">
   <tr>
     <th><%=t('instructions.name')%></th>
     <th><%= t('user')%></th>
     <th><%= t('time_update')%></th>
-    <th><%= t('instructions.tags')%></th>
   </tr>
 
   <% @instructions.each do |instruction| %>
       <tr>
-        <td><%= link_to instruction.name, instruction_path(instruction.id) %>
+        <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
         <td><%= instruction.user.name %></td>
         <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
-        <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
       </tr>
   <% end %>
 </table>
+

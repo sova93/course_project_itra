@@ -1,10 +1,22 @@
 class User < ApplicationRecord
 
-  has_many :instructions
+  has_many :instructions, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:facebook, :vkontakte, :twitter, :google_oauth2]
+
+  enum role: [:member, :admin]
+
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :member
+  end
+
+  def self.is_signed_in?
+    is_signed_in?
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|

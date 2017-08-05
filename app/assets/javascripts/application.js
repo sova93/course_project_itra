@@ -48,30 +48,47 @@ $(document).ready( function() {
         }
     }
 
-    // $("#imgInp").change(function(){
     $(document).on("change", "#imgInp", function(){
         readURL(this);
     });
 
+    var show_text_fn = function (){
+        $("div#block_image").hide();
+        $("div#block_video").hide();
+        $("div#block_text").show();
+    };
+    var show_image_fn = function (){
+        $("div#block_text").hide();
+        $("div#block_video").hide();
+        $("div#block_image").show();
+    };
+    var show_video_fn = function (){
+        $("div#block_text").hide();
+        $("div#block_image").hide();
+        $("div#block_video").show();
+    };
+
+    $("div#block_text").hide();
     $("div#block_image").hide();
     $("div#block_video").hide();
 
+    if ($("select#block_block_type").val() == "text"){
+        show_text_fn();
+    }else if ($("select#block_block_type").val() == "image"){
+        show_image_fn();
+    }else if ($("select#block_block_type").val() == "video"){
+        show_video_fn();
+    }
 
     $("select#block_block_type").change(function() {
         if ($(this).val() == "text"){
-            $("div#block_image").hide();
-            $("div#block_video").hide();
-            $("div#block_text").show();
+            show_text_fn();
         }
         if ($(this).val() == "image"){
-            $("div#block_text").hide();
-            $("div#block_video").hide();
-            $("div#block_image").show();
+            show_image_fn()
         }
         if ($(this).val() == "video"){
-            $("div#block_text").hide();
-            $("div#block_image").hide();
-            $("div#block_video").show();
+            show_video_fn()
         }
     });
 });

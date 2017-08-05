@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( application_light.css )
 Rails.application.config.assets.precompile += %w( application_dark.css )
-Rails.application.config.assets.precompile += %w( tags.css )
+Rails.application.config.assets.precompile += %w( tags.css persons.css )

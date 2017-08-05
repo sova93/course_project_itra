@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     }
     get 'persons/profile', as: 'user_root'
     match 'persons/edit', via: :all
+    get 'persons/index'
+    get 'persons/show/:id', to: 'persons#show', as: 'persons_show'
+    delete 'persons/destroy/:id', to: 'persons#destroy', as: 'persons_destroy'
+    post 'persons/block/:id', to: 'persons#block', as: 'persons_block'
+    post 'persons/unblock/:id', to: 'persons#unblock', as: 'persons_unblock'
 
     get 'persons/change_theme/(:theme_name)', to: 'persons#change_theme'
 

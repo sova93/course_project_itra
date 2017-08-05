@@ -1,21 +1,24 @@
 class BlocksController < ApplicationController
 
   def new
+    authorize! :create, Block
     @block = Block.new
     @block.step = Step.find(params[:step_id].to_i)
   end
 
   def show
     @block = Block.find(params[:id])
+    authorize! :show, @block
   end
-
 
   def edit
     @block = Block.find(params[:id])
+    authorize! :update, @block
   end
 
   def update
     @block = Block.find(params[:id])
+    authorize! :update, @block
     block = block_params
     @block.block_type=block[:block_type]
     @block.step =Step.find(block[:step].to_i)
@@ -24,6 +27,7 @@ class BlocksController < ApplicationController
   end
 
   def create
+    authorize! :create, Block
     block = block_params
     @block = Block.new(block_type: block[:block_type], step: Step.find(block[:step].to_i))
     save_body(block)
@@ -32,6 +36,7 @@ class BlocksController < ApplicationController
 
   def destroy
     @block = Block.find(params[:id])
+    authorize! :destroy, @block
     @block.destroy
     redirect_to instruction_step_path(params[:instruction_id],params[:step_id])
   end

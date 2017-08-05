@@ -16,5 +16,7 @@ module PaintSite
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.available_locales = [:ru, :en]
     # config.i18n.default_locale = :ru
+
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end
