@@ -55,24 +55,7 @@
         </a>
       </div>
 
-      <!--<div class="row">-->
-      <!--<label><h3> : </h3></label>-->
-      <!--<div><h3> </h3></div>-->
-      <!--</div>-->
 
-      <!--<div class="row">-->
-      <!--<label><h3> : </h3></label>-->
-      <!--<div><h3> </h3> </div>-->
-      <!--</div>-->
-
-      <!--<div class="row">-->
-      <!--<label><h3> : </h3></label>-->
-      <!--<div><h3> </h3> </div>-->
-      <!--</div>-->
-      <!--<div class="row">-->
-      <!--<label><h3> : </h3></label>-->
-      <!--<div><h3> </h3> </div>-->
-      <!--</div>-->
     </div>
   </div>
 
@@ -86,11 +69,9 @@
 
   <div class="panel panel-default">
     <div class="panel-heading"><%= t('instructions.titles') %></div>
-    <!--<div class="panel-body">-->
-      <!--<p>...</p>-->
-    <!--</div>-->
 
-    <table class="table">
+    <table class="table" id="instructions">
+      <thead>
       <tr>
         <th><%=t('instructions.name')%></th>
         <th><%=t('instructions.category')%></th>
@@ -98,26 +79,17 @@
         <th><%= t('action.change')%></th>
         <th><%= t('action.delete')%></th>
       </tr>
+      </thead>
+      <tbody>
 
-      <% @user_instructions.each do |instruction| %>
-          <tr>
-            <td>
-              <%= link_to instruction.name, instruction_path(instruction)%>
-              <%= instruction.steps.count %>
-              /
-              <%= instruction.steps.map{|s| s.blocks.count }.sum %>
-            </td>
-            <td><%= instruction.category.name %> </td>
-            <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
-            <% if can? :update, instruction %>
-                <td><%= link_to t('action.change'), edit_instruction_path(instruction)%></td>
-            <%	 end %>
-            <% if can? :destroy, instruction %>
-                <td><%= link_to t('action.delete'), instruction_path(instruction), method: :delete, data: {confirm: t('action.warring') }%></td>
-            <%	 end %>
-          </tr>
-      <% end %>
+      <% paginator = @user_instructions.paginate(page: params[:page], per_page: 5)%>
+
+      <%= render 'instruction', {paginator: paginator} %>
+      </tbody>
+
+
     </table>
+    <%= will_paginate paginator %>
   </div>
 
 </div>

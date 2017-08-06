@@ -58,7 +58,7 @@ class InstructionsController < ApplicationController
 
   def index
     authorize! :index, Instruction
-    @instructions = Instruction.all
+    @instructions = Instruction.paginate(:page => params[:page], :per_page => 10)
   end
 
   private

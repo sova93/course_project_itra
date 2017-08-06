@@ -38,6 +38,7 @@ gem 'populator'
 gem 'ruby-debug-ide'
 gem 'activerecord-import'
 gem 'access-granted'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

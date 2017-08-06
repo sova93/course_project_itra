@@ -8,7 +8,7 @@
     <th><%= t('action.delete')%></th>
   </tr>
 
-  <% @instruction.steps.each do |step| %>
+  <% (paginator = @instruction.steps.paginate(page: params[:page])).each do |step| %>
       <tr>
         <td>
           <%= link_to step.name, instruction_step_path(@instruction.id, step.id) %>
@@ -24,4 +24,4 @@
       </tr>
   <% end %>
 </table>
-
+<%= will_paginate paginator %>

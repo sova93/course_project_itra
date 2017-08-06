@@ -1,0 +1,11 @@
+<% paginator = @user_instructions.paginate(page: params[:page])%>
+
+var appender = "<%= j render('instruction', {paginator: paginator}) %>";
+
+$('#instructions tbody').append(appender);
+
+<% if paginator.next_page %>
+$('.pagination').replaceWith("<%= j  will_paginate(paginator) %>");
+<% else %>
+$('.pagination').remove();
+<% end %>

@@ -70,3 +70,6 @@ en:
   action_menu:
     actions: "Actions"
     view: "View"
+  will_paginate:
+    previous_lable: "&larr; Previous"
+    next_page: "Next &rarr;"

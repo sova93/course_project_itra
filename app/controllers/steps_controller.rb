@@ -1,7 +1,6 @@
 class StepsController < ApplicationController
   def new
     authorize! :create, Step
-
     @step = Step.new()
     @step.instruction = Instruction.find(params[:instruction_id])
   end

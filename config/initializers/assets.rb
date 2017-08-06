@@ -14,6 +14,8 @@ Rails.application.config.assets.paths << "#{Rails}/assets/fonts"
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
+Rails.application.config.assets.precompile += %w( paginator.js )
+
 Rails.application.config.assets.precompile += %w( application.css tags.css persons.css )
 Rails.application.config.assets.precompile += %w( themes/flatly_bootstrap.css themes/darkly_bootstrap.css themes/united_bootstrap.css themes/readable_bootstrap.css themes/cerulean_bootstrap.css )
 

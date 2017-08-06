@@ -1,0 +1,20 @@
+<% paginator.each do |instruction| %>
+    <tr>
+      <td>
+        <%= link_to instruction.name, instruction_path(instruction)%>
+        <% if false %>
+            <%= instruction.steps.count %>
+            /
+            <%= instruction.steps.map{|s| s.blocks.count }.sum %>
+        <%end%>
+      </td>
+      <td><%= instruction.category.name %> </td>
+      <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
+      <% if can? :update, instruction %>
+          <td><%= link_to t('action.change'), edit_instruction_path(instruction)%></td>
+      <%	 end %>
+      <% if can? :destroy, instruction %>
+          <td><%= link_to t('action.delete'), instruction_path(instruction), method: :delete, data: {confirm: t('action.warring') }%></td>
+      <%	 end %>
+    </tr>
+<% end %>

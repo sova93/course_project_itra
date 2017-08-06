@@ -70,3 +70,6 @@ ru:
     action_menu:
         actions: "Действия"
         view: "Просмотреть"
+    will_paginate:
+        previous_label: "&larr; Предыдущая"
+        next_label: "Следующая &rarr;"

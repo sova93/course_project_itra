@@ -8,10 +8,10 @@ namespace :my_faker_namespace do
     MINTAGS, MAXTAGS = 25, 100
     MINTAGSININSTRUCTION, MAXTAGSININSTRUCTION = 1, 7
 
-    MINUSERS, MAXUSERS = 5, 10
-    MINCATS, MAXCATS = 3, 5
-    MININSTRUCTIONS, MAXINSTRUCTIONS = 5, 7
-    MINSTEPS, MAXSTEPS = 5, 10
+    MINUSERS, MAXUSERS = 1, 2
+    MINCATERGORIES, MAXCATEGORIES = 3, 5
+    MININSTRUCTIONS, MAXINSTRUCTIONS = 5, 80
+    MINSTEPS, MAXSTEPS = 5, 35
     MINBLOCKS, MAXBLOCKS = 10, 20
 
     ActiveRecord::Base.transaction do
@@ -51,7 +51,7 @@ namespace :my_faker_namespace do
       user.skip_confirmation!
       users_list << user
 
-      (1..Faker::Number.between(MINCATS, MAXCATS)).each do |cat_i|
+      (1..Faker::Number.between(MINCATERGORIES, MAXCATEGORIES)).each do |cat_i|
         category = Category.create(name: Faker::Lorem.word)
 
         (1..Faker::Number.between(MININSTRUCTIONS, MAXINSTRUCTIONS)).each do |inst_i|
