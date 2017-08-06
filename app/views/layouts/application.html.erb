@@ -87,16 +87,10 @@
       </form>
 
       <div class="navbar-right">
-        <a href="<%= root_path%>" >
-          <img src="http://res.cloudinary.com/dpoas7y00/image/upload/v1501857180/Actions-go-home_tcqgu4.ico" alt="Go to W3Schools!" width="45" height="45" border="0">
-        </a>
-
         <% if current_user != nil %>
             <p class="navbar-text"><%= current_user.role %></p>
         <% end %>
-
       </div>
-
 
     </div>
   </div>
