@@ -23,3 +23,10 @@
 /yarn-error.log
 
 .byebug_history
+
+/solr/data
+/solr/test
+/solr/development
+/solr/default/data
+/log/*.log.lck
+/solr/pids
