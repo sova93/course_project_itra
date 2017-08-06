@@ -37,6 +37,8 @@ en:
     was_update: "Options updated!"
     error_creation: "Didn't create "
   instructions:
+    title: "Instruction"
+    titles: "Instructions"
     instruction: "instruction"
     create: "Create"
     name: "Name"

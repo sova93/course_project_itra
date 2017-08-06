@@ -76,7 +76,7 @@ class PersonsController < ApplicationController
     rescue AccessGranted::AccessDenied
       flash[:info] = t('settings_menu.non-user')
     end
-    redirect_to root_path
+    redirect_to request.referer
   end
 
   private

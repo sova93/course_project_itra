@@ -1,26 +1,33 @@
-
 <div class="col-md-4">
-  <div><%= link_to t('profile'), persons_edit_path %></div>
-  <div><%= link_to t('users.update_settings'), edit_user_registration_path %></div>
-  <%= link_to t('instructions.create')+" "+t('instructions.instruction'), new_instruction_path %>
-  <div><%= link_to t('action.all_istructions'), instructions_path %></div>
-  <% if can? :index, User %>
-      <div><%= link_to t('users.all_users'), persons_index_path %></div>
-  <% end %>
-
   <ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item"><%= link_to t('profile'), persons_edit_path %></li>
+    <li class="list-group-item"><%= link_to t('users.update_settings'), edit_user_registration_path %></li>
+    <li class="list-group-item"><%= link_to t('instructions.create') + ' ' + t('instructions.instruction'), new_instruction_path %></li>
+    <li class="list-group-item">
+      <%= link_to t('action.all_istructions'), instructions_path %>
+      <span class="badge"><%= Instruction.all.count %></span>
+    </li>
+    <% if can? :index, User %>
+        <li class="list-group-item">
+          <%= link_to t('users.all_users'), persons_index_path %>
+          <span class="badge"><%= User.all.count %></span>
+        </li>
+    <% end %>
   </ul>
 
 </div>
 
+<style>
+  .word-wrap-panel {
+    word-wrap: break-word;
+  }
+</style>
+
 <div class="col-md-8">
   <div class="row">
-    <h4><%=@user_obj.email%></h4>
+    <div class="well well-sm">
+      <h4 class="text-center"><%=@user_obj.email%></h4>
+    </div>
   </div>
   <div class="row">
 
@@ -29,26 +36,43 @@
     </div>
 
     <div class="col-md-7">
-
-      <div class="row">
-        <label><h3> <%=t('user_form.first_name') %>: </h3></label>
-        <div><h3> <%=@user_obj.firstname %></h3></div>
+      <div class="list-group">
+        <a href="#" class="list-group-item">
+          <h4 class="list-group-item-heading"><%=t('user_form.first_name') %></h4>
+          <p class="list-group-item-text word-wrap-panel"><%=@user_obj.firstname %></p>
+        </a>
+        <a href="#" class="list-group-item">
+          <h4 class="list-group-item-heading"><%=t('user_form.last_name') %></h4>
+          <p class="list-group-item-text word-wrap-panel"><%=@user_obj.lastname %></p>
+        </a>
+        <a href="#" class="list-group-item">
+          <h4 class="list-group-item-heading"><%=t('user_form.hobbies') %></h4>
+          <p class="list-group-item-text word-wrap-panel"><%=@user_obj.hobbies %></p>
+        </a>
+        <a href="#" class="list-group-item">
+          <h4 class="list-group-item-heading"><%=t('user_form.about') %></h4>
+          <p class="list-group-item-text word-wrap-panel"><%=@user_obj.about %></p>
+        </a>
       </div>
 
-      <div class="row">
-        <label><h3> <%=t('user_form.last_name') %>: </h3></label>
-        <div><h3> <%=@user_obj.lastname %></h3> </div>
-      </div>
+      <!--<div class="row">-->
+      <!--<label><h3> : </h3></label>-->
+      <!--<div><h3> </h3></div>-->
+      <!--</div>-->
 
-      <div class="row">
-        <label><h3> <%=t('user_form.hobbies') %>: </h3></label>
-        <div><h3> <%=@user_obj.hobbies %></h3> </div>
-      </div>
+      <!--<div class="row">-->
+      <!--<label><h3> : </h3></label>-->
+      <!--<div><h3> </h3> </div>-->
+      <!--</div>-->
 
-      <div class="row">
-        <label><h3> <%=t('user_form.about') %>: </h3></label>
-        <div><h3> <%=@user_obj.about %></h3> </div>
-      </div>
+      <!--<div class="row">-->
+      <!--<label><h3> : </h3></label>-->
+      <!--<div><h3> </h3> </div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+      <!--<label><h3> : </h3></label>-->
+      <!--<div><h3> </h3> </div>-->
+      <!--</div>-->
     </div>
   </div>
 
@@ -60,33 +84,40 @@
     <p>
   </div>
 
-  <table border="1" class="table">
-    <tr>
-      <th><%=t('instructions.name')%></th>
-      <th><%=t('instructions.category')%></th>
-      <th><%=t('instructions.tags')%></th>
-      <th><%= t('action.change')%></th>
-      <th><%= t('action.delete')%></th>
-    </tr>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= t('instructions.titles') %></div>
+    <!--<div class="panel-body">-->
+      <!--<p>...</p>-->
+    <!--</div>-->
 
-    <% @user_instructions.each do |instruction| %>
-        <tr>
-          <td>
-            <%= link_to instruction.name, instruction_path(instruction)%>
-            <%= instruction.steps.count %>
-            /
-            <%= instruction.steps.map{|s| s.blocks.count }.sum %>
-          </td>
-          <td><%= instruction.category.name %> </td>
-          <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
-          <% if can? :update, instruction %>
-              <td><%= link_to t('action.change'), edit_instruction_path(instruction)%></td>
-          <%	 end %>
-          <% if can? :destroy, instruction %>
-              <td><%= link_to t('action.delete'), instruction_path(instruction), method: :delete, data: {confirm: t('action.warring') }%></td>
-          <%	 end %>
-        </tr>
-    <% end %>
-  </table>
+    <table class="table">
+      <tr>
+        <th><%=t('instructions.name')%></th>
+        <th><%=t('instructions.category')%></th>
+        <th><%=t('instructions.tags')%></th>
+        <th><%= t('action.change')%></th>
+        <th><%= t('action.delete')%></th>
+      </tr>
+
+      <% @user_instructions.each do |instruction| %>
+          <tr>
+            <td>
+              <%= link_to instruction.name, instruction_path(instruction)%>
+              <%= instruction.steps.count %>
+              /
+              <%= instruction.steps.map{|s| s.blocks.count }.sum %>
+            </td>
+            <td><%= instruction.category.name %> </td>
+            <td><%= raw instruction.tags.map{ |t| link_to t.name, tag_path(t.name), class: 'tag tag-primary'}.join(" ") %> </td>
+            <% if can? :update, instruction %>
+                <td><%= link_to t('action.change'), edit_instruction_path(instruction)%></td>
+            <%	 end %>
+            <% if can? :destroy, instruction %>
+                <td><%= link_to t('action.delete'), instruction_path(instruction), method: :delete, data: {confirm: t('action.warring') }%></td>
+            <%	 end %>
+          </tr>
+      <% end %>
+    </table>
+  </div>
 
 </div>
