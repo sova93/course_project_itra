@@ -12,7 +12,9 @@ module ApplicationHelper
   end
 
   def current_user_theme
-    return current_user[:theme] if current_user
+    if current_user && current_user[:theme] != nil
+      return current_user[:theme] if current_user
+    end
     return 'united'
   end
 end
