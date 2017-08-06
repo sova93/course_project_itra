@@ -17,9 +17,9 @@ class AccessPolicy
     #
     role :admin, proc { |user| user != nil && user.admin? } do
       can [:index, :destroy, :block, :update], User
-      can [:index, :destroy, :update], Instruction
-      can [:index, :destroy, :update], Step
-      can [:index, :destroy, :update], Block
+      can [:index, :destroy, :update, :create], Instruction
+      can [:index, :destroy, :update, :create], Step
+      can [:index, :destroy, :update, :create], Block
     end
 
     # More privileged role, applies to registered users.
