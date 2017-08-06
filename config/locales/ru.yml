@@ -60,6 +60,11 @@ ru:
         all_istructions: "Все инструкции"
         block: "Заблокировать"
         unblock: "Разблокировать"
+        sort: "Сортировка"
     users:
         all_users: "Все пользователи"
         created_at: "Время создания"
+        update_settings: "Обновить настройки"
+    action_menu:
+        actions: "Действия"
+        view: "Просмотреть"

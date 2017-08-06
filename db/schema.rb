@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805160008) do
+ActiveRecord::Schema.define(version: 20170806203921) do
 
   create_table "blocks", force: :cascade do |t|
     t.text "body"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20170805160008) do
     t.string "phone"
     t.string "country"
     t.string "city"
-    t.string "theme", default: "light"
+    t.string "theme"
     t.integer "role"
     t.boolean "banned"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

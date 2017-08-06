@@ -25,7 +25,11 @@ class AccessPolicy
     # More privileged role, applies to registered users.
     #
     role :member, proc { |user| user != nil } do
-      can [:change_theme, :update, :show_profile], User
+      can [:change_theme,  :show_profile], User
+
+      can [:update], User do |user_obj, user|
+        user_obj == user
+      end
       can [:update, :destroy], Instruction do |instruction, user|
         instruction.user == user
       end

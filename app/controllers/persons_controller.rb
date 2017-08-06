@@ -7,21 +7,18 @@ class PersonsController < ApplicationController
 
   def profile
     authorize! :show_profile, User
-
     @user_obj = User.find(current_user[:id])
     @user_instructions = Instruction.where(user_id: @user_obj)
   end
 
   def show
     authorize! :show, Instruction
-
     @user_obj = User.find(params[:id])
     @user_instructions = Instruction.where(user_id: @user_obj)
   end
 
   def edit
     authorize! :update, User
-
     case request.method_symbol
       when :get
         @user = User.find_by(id: current_user[:id])
@@ -39,7 +36,6 @@ class PersonsController < ApplicationController
 
   def block
     authorize! :block, User
-
     @user = User.find(params[:id])
     unless @user.banned?
       @user.banned=true
@@ -49,7 +45,6 @@ class PersonsController < ApplicationController
 
   def unblock
     authorize! :block, User
-
     @user = User.find(params[:id])
     if @user.banned?
       @user.banned=false
@@ -61,6 +56,16 @@ class PersonsController < ApplicationController
     authorize! :destroy, User
     @user = User.find(params[:id])
     redirect_to  request.referer if @user.destroy
+  end
+
+  def sort_up_down
+    @user_obj = User.find(params[:id])
+    @user_instructions = Instruction.where(user_id: @user_obj.id).order(:name=>'asc')
+  end
+
+  def sort_down_up
+    @user_obj = User.find(params[:id])
+    @user_instructions = Instruction.where(user_id: @user_obj.id).order(:name=>'desc')
   end
 
   def change_theme

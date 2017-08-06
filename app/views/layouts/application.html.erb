@@ -84,6 +84,25 @@
         </li>
       </ul>
 
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <button class="navbar-btn btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <%= t('action_menu.actions') %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="#"><%= t('action_menu.view') %></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('users.all_users'),  controller: '/persons', action: 'index'  %></li>
+                <li><%= link_to t('action.all_istructions'), instructions_path %></li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+      </ul>
+
       <form action="<%= search_search_path %>" class="navbar-form navbar-left" method="get">
         <div class="form-group">
           <input name="search" type="text" class="form-control" placeholder=<%=t('action.search_place')%>>

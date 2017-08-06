@@ -60,6 +60,11 @@ en:
     all_istructions: "All instructions"
     block: "Block"
     unblock: "Unblock"
+    sort: "Sort"
   users:
     all_users: "All users"
     created_at: "Created at"
+    update_settings: "Update settings"
+  action_menu:
+    actions: "Actions"
+    view: "View"

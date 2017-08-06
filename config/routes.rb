@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     delete 'persons/destroy/:id', to: 'persons#destroy', as: 'persons_destroy'
     post 'persons/block/:id', to: 'persons#block', as: 'persons_block'
     post 'persons/unblock/:id', to: 'persons#unblock', as: 'persons_unblock'
+    get 'persons/sort_up_down/:id', to: 'persons#sort_up_down', as: 'persons_sort_up_down'
+    get 'persons/sort_down_up/:id', to: 'persons#sort_down_up', as: 'persons_sort_down_up'
 
     get 'persons/change_theme/(:theme_name)', to: 'persons#change_theme'
 

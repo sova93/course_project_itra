@@ -1,12 +1,20 @@
-<h2><%= t('.title', resource: resource_class.model_name.human) %></h2>
+<div class="row main">
+  <div class="main-login main-center">
+    <h2> <%= t('users.update_settings') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
+        <div class="form-group">
+          <%= f.label :email, class: 'cols-sm-2 control-label' %>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('enter')+ :email.to_s %>
+            </div>
+          </div>
+        </div>
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>
@@ -14,22 +22,41 @@
     </p>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'cols-sm-2 control-label' %>
+          <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t('enter')+ t('password')%>
+            </div>
+          </div>
+        </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'cols-sm-2 control-label' %><br />
+    <div class="cols-sm-10">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: t('enter')+ t('password')%>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+        <div class="form-group">
+    <%= f.label :current_password , class: 'cols-sm-2 control-label'%> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control', placeholder: t('enter')+ t('password')%>
+            </div>
+          </div>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password %>
+  <div class="form-group ">
+    <%= f.submit t('.update'), class:'btn btn-primary btn-lg btn-block login-button' %>
   </div>
-
-  <div><%= f.submit t('.update') %></div>
 <% end %>
 
 <h3><%= t('.cancel_my_account') %></h3>
@@ -37,3 +64,5 @@
 <p><%= t('.unhappy') %> <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
 
 <%= link_to t('devise.shared.links.back'), :back %>
+  </div>
+</div>
