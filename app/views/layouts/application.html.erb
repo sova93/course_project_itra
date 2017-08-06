@@ -120,24 +120,24 @@
   </div>
 </nav>
 
-
-<div class="col-md-offset-1 col-md-10">
-  <div class="tag_cloud">
-    <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
-        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="tag_cloud">
+        <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+            <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+        <%= puts key %>
+        <%= puts value %>
     <% end %>
   </div>
-</div>
-
-<div class="container-fluid">
-  <div class="col-md-offset-1 col-md-10">
-    <div>
-      <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
-          <%= puts key %>
-          <%= puts value %>
-      <% end %>
-    </div>
+  <div class="row">
     <%= yield %>
   </div>
 </div>

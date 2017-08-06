@@ -1,4 +1,5 @@
-<div class="col-xs-3 col-md-3">
+
+<div class="col-md-4">
   <div><%= link_to t('profile'), persons_edit_path %></div>
   <div><%= link_to t('users.update_settings'), edit_user_registration_path %></div>
   <%= link_to t('instructions.create')+" "+t('instructions.instruction'), new_instruction_path %>
@@ -6,57 +7,56 @@
   <% if can? :index, User %>
       <div><%= link_to t('users.all_users'), persons_index_path %></div>
   <% end %>
+
+  <ul class="list-group">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+
 </div>
-<div class="col-xs-9 col-md-9">
-  <h4><%=@user_obj.email%></h4>
-  <div class="col-xs-4 col-md-4">
-    <img src="<%=@user_obj.image %>" alt=<%=t('user_form.image') %> width="300" height="300" align="left">
+
+<div class="col-md-8">
+  <div class="row">
+    <h4><%=@user_obj.email%></h4>
   </div>
+  <div class="row">
 
-  <div class="col-xs-8 col-md-8">
-
-    <div class="row">
-      <div class="col-xs-5 col-md-5" align="left">
-        <label><H2> <%=t('user_form.first_name') %>: </H2></label>
-      </div>
-      <div class="col-xs-7 col-md-7" align="left">
-        <div><H2> <%=@user_obj.firstname %></H2> </div>
-      </div>
+    <div class="col-md-5">
+      <img src="<%=@user_obj.image %>" alt=<%=t('user_form.image') %> width="300" height="300" align="left">
     </div>
 
-    <div class="row">
-      <div class="col-xs-5 col-md-5" align="left">
-        <label><H2> <%=t('user_form.last_name') %>: </H2></label>
-      </div>
-      <div class="col-xs-7 col-md-7" align="left">
-        <div><H2> <%=@user_obj.lastname %></H2> </div>
-      </div>
-    </div>
+    <div class="col-md-7">
 
-    <div class="row">
-      <div class="col-xs-5 col-md-5" align="left">
-        <label><H2> <%=t('user_form.hobbies') %>: </H2></label>
+      <div class="row">
+        <label><h3> <%=t('user_form.first_name') %>: </h3></label>
+        <div><h3> <%=@user_obj.firstname %></h3></div>
       </div>
-      <div class="col-xs-7 col-md-7" align="left">
-        <div><H2> <%=@user_obj.hobbies %></H2> </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-xs-5 col-md-5" align="left">
-        <label><H2> <%=t('user_form.about') %>: </H2></label>
+      <div class="row">
+        <label><h3> <%=t('user_form.last_name') %>: </h3></label>
+        <div><h3> <%=@user_obj.lastname %></h3> </div>
       </div>
-      <div class="col-xs-7 col-md-7" align="left">
-        <div><H2> <%=@user_obj.about %></H2> </div>
+
+      <div class="row">
+        <label><h3> <%=t('user_form.hobbies') %>: </h3></label>
+        <div><h3> <%=@user_obj.hobbies %></h3> </div>
+      </div>
+
+      <div class="row">
+        <label><h3> <%=t('user_form.about') %>: </h3></label>
+        <div><h3> <%=@user_obj.about %></h3> </div>
       </div>
     </div>
   </div>
 
   <div>
     <p>
-    <b align="left"><%=t('action.sort')%></b>
-    <%= link_to  raw('<span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>'), persons_sort_up_down_path(@user_obj.id)%>
-    <%= link_to  raw('<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>'), persons_sort_down_up_path(@user_obj.id)%>
+      <b align="left"><%=t('action.sort')%></b>
+      <%= link_to  raw('<span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>'), persons_sort_up_down_path(@user_obj.id)%>
+      <%= link_to  raw('<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>'), persons_sort_down_up_path(@user_obj.id)%>
     <p>
   </div>
 
