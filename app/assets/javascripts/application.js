@@ -52,6 +52,10 @@ $(document).ready( function() {
         readURL(this);
     });
 
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     var show_text_fn = function (){
         $("div#block_image").hide();
         $("div#block_video").hide();

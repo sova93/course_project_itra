@@ -13,6 +13,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( application_light.css )
-Rails.application.config.assets.precompile += %w( application_dark.css )
-Rails.application.config.assets.precompile += %w( tags.css persons.css )
+Rails.application.config.assets.precompile += %w( application.css tags.css persons.css )
+Rails.application.config.assets.precompile += %w( themes/flatly_bootstrap.css themes/darkly_bootstrap.css themes/united_bootstrap.css themes/readable_bootstrap.css themes/cerulean_bootstrap.css )
+
+

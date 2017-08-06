@@ -1,4 +1,5 @@
 ru:
+    profile_tooltip: "Профиль пользователя"
     greeting: "Привет"
     user: "Пользователь"
     time_update: "Время обновления"

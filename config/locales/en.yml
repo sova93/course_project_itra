@@ -1,4 +1,5 @@
 en:
+  profile_tooltip: "User Profile"
   greeting: "Hello"
   user: "User"
   time_update: "Time update"
