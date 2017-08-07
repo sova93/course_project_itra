@@ -1,37 +1,46 @@
-<h1><%= t('instructions.last_instructions')%></h1>
+<div class="col-md-offset-1 col-md-10">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><%= t('instructions.last_instructions')%></div>
 
-<table border="1" class="table">
-  <tr>
-    <th><%=t('instructions.name')%></th>
-    <th><%= t('user')%></th>
-    <th><%= t('time_update')%></th>
-  </tr>
-
-  <% @instructions.each do |instruction| %>
+    <table class="table table-striped table-bordered table-hover table-condensed">
       <tr>
-        <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
-        <td><%= link_to instruction.user.name,   persons_show_path(instruction.user) %></td>
-        <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+        <th style="width: 200px;"><%= t('instructions.name') %></th>
+        <th><%= t('user') %></th>
+        <th><%= t('time_update') %></th>
       </tr>
-  <% end %>
-</table>
 
-<H1><%= t('instructions.popular')%></H1>
-
-<table border="1" class="table">
-  <tr>
-    <th><%=t('instructions.name')%></th>
-    <th><%= t('user')%></th>
-    <th><%= t('time_update')%></th>
-  </tr>
-
-  <% if true %>
-      <% @popular_instructions.each do |instruction| %>
+      <% @instructions.each do |instruction| %>
           <tr>
-            <td><%= link_to instruction.instruction.name, instruction_path(instruction.instruction.id) %></td>
-            <td><%= link_to instruction.instruction.user.name,   persons_show_path(instruction.instruction.user) %></td>
-            <td><%= instruction.instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+            <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
+            <td><%= link_to instruction.user.name,   persons_show_path(instruction.user) %></td>
+            <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
           </tr>
       <% end %>
-  <% end %>
-</table>
+    </table>
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><%= t('instructions.popular')%></div>
+
+
+    <table class="table table-striped table-bordered table-hover">
+      <tr>
+        <th style="width: 200px;"><%=t('instructions.name')%></th>
+        <th><%= t('user')%></th>
+        <th><%= t('time_update')%></th>
+      </tr>
+
+      <% if true %>
+          <% @popular_instructions.each do |instruction| %>
+              <tr>
+                <td><%= link_to instruction.instruction.name, instruction_path(instruction.instruction.id) %></td>
+                <td><%= link_to instruction.instruction.user.name,   persons_show_path(instruction.instruction.user) %></td>
+                <td><%= instruction.instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

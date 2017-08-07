@@ -8,10 +8,10 @@ namespace :my_faker_namespace do
     MINTAGS, MAXTAGS = 25, 100
     MINTAGSININSTRUCTION, MAXTAGSININSTRUCTION = 1, 7
 
-    MINUSERS, MAXUSERS = 1, 2
+    MINUSERS, MAXUSERS = 5, 10
     MINCATERGORIES, MAXCATEGORIES = 3, 5
-    MININSTRUCTIONS, MAXINSTRUCTIONS = 5, 80
-    MINSTEPS, MAXSTEPS = 5, 35
+    MININSTRUCTIONS, MAXINSTRUCTIONS = 20, 80
+    MINSTEPS, MAXSTEPS = 8, 35
     MINBLOCKS, MAXBLOCKS = 10, 20
 
     ActiveRecord::Base.transaction do
@@ -27,12 +27,15 @@ namespace :my_faker_namespace do
       users_list = []
 
       (1..users_count).each do
+        _user_name = Faker::Name.name
         user = User.create(
-            name: Faker::Name.name,
-            email: Faker::Internet.email,
+            name: _user_name,
+            email: Faker::Internet.email(_user_name),
             password: '123456',
             confirmed_at: DateTime.now,
             image: Faker::Avatar.image(Faker::Internet.slug, "300x300", "png"),
+            firstname: Faker::Name.first_name,
+            lastname: Faker::Name.last_name,
         )
         user.skip_confirmation!
         users_list << user

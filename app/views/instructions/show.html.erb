@@ -1,27 +1,31 @@
 <h1> <%= @instruction.name %></h1>
 <%= link_to t('instructions.add')+ ' ' + t('instructions.step'), new_instruction_step_path(instruction_id: @instruction) %>
 
-<table border="1" class="table">
-  <tr>
-    <th><%=t('instructions.name')%></th>
-    <th><%= t('action.change')%></th>
-    <th><%= t('action.delete')%></th>
-  </tr>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t('instructions.step') %></div>
 
-  <% (paginator = @instruction.steps.paginate(page: params[:page])).each do |step| %>
-      <tr>
-        <td>
-          <%= link_to step.name, instruction_step_path(@instruction.id, step.id) %>
-          /
-          <%= step.blocks.count %>
-        </td>
-        <% if can? :update, step %>
-            <td><%= link_to t('action.change'), edit_instruction_step_path(@instruction.id, step.id) %></td>
-        <% end %>
-        <% if can? :destroy, step %>
-            <td><%= link_to t('action.delete'), instruction_step_path(@instruction.id, step.id), method: :delete, data: {confirm: t('action.warring') } %></td>
-        <% end %>
-      </tr>
-  <% end %>
-</table>
+  <table border="1" class="table table-striped table-bordered table-hover">
+    <tr>
+      <th><%=t('instructions.name')%></th>
+      <th><%= t('action.change')%></th>
+      <th><%= t('action.delete')%></th>
+    </tr>
+
+    <% (paginator = @instruction.steps.paginate(page: params[:page])).each do |step| %>
+        <tr>
+          <td>
+            <%= link_to step.name, instruction_step_path(@instruction.id, step.id) %>
+            /
+            <%= step.blocks.count %>
+          </td>
+          <% if can? :update, step %>
+              <td><%= link_to t('action.change'), edit_instruction_step_path(@instruction.id, step.id) %></td>
+          <% end %>
+          <% if can? :destroy, step %>
+              <td><%= link_to t('action.delete'), instruction_step_path(@instruction.id, step.id), method: :delete, data: {confirm: t('action.warring') } %></td>
+          <% end %>
+        </tr>
+    <% end %>
+  </table>
+</div>
 <%= will_paginate paginator %>
