@@ -43,6 +43,8 @@ class AccessPolicy
       end
 
       can :create, Instruction
+      can :create, Step
+      can :create, Block
     end
 
     # The base role with no additional conditions.

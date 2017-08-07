@@ -2,6 +2,7 @@
 <table border="1" class="table">
   <tr>
     <th><%=t('instructions.name')%></th>
+    <th><%=t('instructions.category')%></th>
     <th><%= t('user')%></th>
     <th><%= t('time_update')%></th>
   </tr>
@@ -9,6 +10,7 @@
   <% @instructions.each do |instruction| %>
       <tr>
         <td><%= link_to instruction.name, instruction_path(instruction.id) %></td>
+        <td><%= instruction.category.name %></td>
         <td><%= instruction.user.name %></td>
         <td><%= instruction.updated_at.localtime.strftime '%d-%m-%Y %H:%M:%S' %></td>
       </tr>

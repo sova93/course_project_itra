@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from 'AccessGranted::AccessDenied' do |exception|
+    flash[:danger] = "You don't have permission to access this page."
+    redirect_to root_path
+  end
+
   private
 
   def set_locale

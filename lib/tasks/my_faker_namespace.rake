@@ -1,11 +1,30 @@
 namespace :my_faker_namespace do
+
+  desc "TODO"
+  task category_faker_task: :environment do
+    require 'faker'
+    [Category, Instruction, Step, Block, Tag, Tagging, CountLink, User].each(&:delete_all)
+
+    MINCATERGORIES, MAXCATEGORIES = 3, 5
+
+    ActiveRecord::Base.transaction do
+
+      (1..Faker::Number.between(MINCATERGORIES, MAXCATEGORIES)).each do |cat_i|
+        category = Category.create(name: Faker::Lorem.word)
+      end
+
+
+    end
+
+  end
+
   desc "TODO"
   task my_faker_task: :environment do
     require 'faker'
     [Category, Instruction, Step, Block, Tag, Tagging, CountLink, User].each(&:delete_all)
 
     Faker::Config.random = Random.new(42+7)
-    MINTAGS, MAXTAGS = 25, 100
+    MINTAGS, MAXTAGS = 17, 35
     MINTAGSININSTRUCTION, MAXTAGSININSTRUCTION = 1, 7
 
     MINUSERS, MAXUSERS = 5, 10
@@ -20,7 +39,7 @@ namespace :my_faker_namespace do
       tags_list = []
 
       (1..tags_count).each do
-        tags_list << Tag.create(name: Faker::Lorem.word)
+        tags_list << Tag.create(name: Faker::Lorem.unique.word)
       end
 
       users_count = Faker::Number.between(MINUSERS, MAXUSERS)
