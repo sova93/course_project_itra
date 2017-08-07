@@ -26,7 +26,7 @@
 
         <% if user_signed_in? %>
             <li>
-              <%= link_to "__PROFILE__", user_root_path, {'data-toggle': 'tooltip', 'data-placement': 'bottom', title: t('profile_tooltip')} %>
+              <%= link_to t('profile'), user_root_path, {'data-toggle': 'tooltip', 'data-placement': 'bottom', title: t('profile_tooltip')} %>
             </li>
         <% end %>
 
